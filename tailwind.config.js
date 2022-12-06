@@ -10,5 +10,6 @@ module.exports = {
       // inset: ['group-focus']
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
