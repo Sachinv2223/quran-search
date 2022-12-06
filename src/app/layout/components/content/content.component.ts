@@ -13,8 +13,5 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSearchBtnClick(inpKey: string) {
-    console.log(inpKey);
-  }
 
 }

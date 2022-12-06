@@ -1,1 +1,51 @@
-<p>home works!</p>
+<div class="container mx-auto pt-16 flex flex-col">
+    <!-- Search bar div -->
+    <div
+        class="p-6 mx-5 my-4 h-[180px] md:h-[200px] md:p-10 bg-[url('assets/bg-quran.jpg')] bg-cover bg-center rounded-2xl flex flex-col justify-center space-y-4">
+
+        <h1 class="text-3xl md:text-4xl text-center md:text-start text-white">Search Quran Verse...!</h1>
+
+        <form
+            class="flex items-center justify-between mx-auto bg-white py-2 pl-3 pr-3 md:py-3 md:pl-4 md:pr-5 rounded-2xl space-x-4 md:w-8/12"
+            #form="ngForm" (ngSubmit)="form.valid&&onSearchBtnClick(inpKey.value)">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                class="w-6 h-6 md:flex-none">
+                <path fill-rule="evenodd"
+                    d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+                    clip-rule="evenodd" />
+            </svg>
+            <input type="text" placeholder="Enter keywords..."
+                class="focus:outline-none py-1 px-3 rounded-lg md:flex-grow" name="inpKey" required #inpKey="ngModel"
+                ngModel>
+            <button type="submit"
+                class="font-medium bg-black text-white py-1 px-3 rounded-lg md:flex-none cursor-pointer transition ease-out hover:-translate-y-0.5 md:hover:-translate-y-1">Search</button>
+
+        </form>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="isLoading" class="m-auto p-5">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="w-10 h-10 animate-spin">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+        </svg>
+    </div>
+
+    <!-- Result div -->
+    <div *ngIf="result && !isLoading" class="">
+
+        <div class="font-bold px-5 m-5">
+            Found {{result.count}} ayat for your keyword...!
+        </div>
+
+        <div *ngFor="let match of result.matches" class="p-5 rounded-3xl bg-white m-5 shadow-xl">
+            <p>{{match.text}}</p>
+            <p class="font-semibold">{{match.surah.englishName}} ({{match.surah.englishNameTranslation}}) - Ayah
+                {{match.numberInSurah}}</p>
+        </div>
+
+    </div>
+
+</div>

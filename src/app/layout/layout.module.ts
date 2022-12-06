@@ -3,7 +3,6 @@ import { ComponentsModule } from './components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LayoutRoutingModule } from './layout-routing.module';
 import { TemplateComponent } from './template/template.component';
 
 
@@ -13,11 +12,10 @@ import { TemplateComponent } from './template/template.component';
   ],
   imports: [
     CommonModule,
-    LayoutRoutingModule,
     ComponentsModule,
     PagesRoutingModule
   ],
-  exports:[
+  exports: [
     TemplateComponent
   ]
 })
