@@ -3,7 +3,19 @@
 
     <!-- Navabar  -->
     <nav class="fixed top-0 left-0 bg-white w-full shadow">
-       <app-header></app-header> 
+        <app-header></app-header>
     </nav>
+
+    <!-- Content -->
+    <div class="min-h-[88%] w-full">
+        <!-- <app-content></app-content> -->
+        <router-outlet></router-outlet>
+    </div>
+
+
+    <!-- Footer -->
+    <div class="bg-white w-full">
+        <app-footer></app-footer>
+    </div>
 
 </div>
